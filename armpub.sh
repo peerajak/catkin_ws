@@ -1,6 +1,6 @@
 #!/bin/bash
 # This file tell how to submit a massage to a topic and send it to move motor
-#compile and upload moveo_moveit_arduino.ino
+#compile and upload moveo_moveit_arduino.ino please
 #roscore
 #rosrun rosserial_python serial_node.py /dev/ttyUSB0
 #rostopic echo joint_steps
