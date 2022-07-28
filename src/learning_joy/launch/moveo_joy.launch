@@ -1,0 +1,30 @@
+<launch>
+ <!-- Turtlesim Node-->
+  <!--node pkg="moveosim" type="moveosim_node" name="sim"/-->
+
+ <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="moveo_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+  </node>
+
+<!-- serial node to arduino -->
+  <node name="serial_node"        pkg="rosserial_python"      type="serial_node.py">
+    <param name="port"              type="string"               value="/dev/ttyUSB0"/>
+    <param name="baud"              type="int"                  value="57600"/>
+  </node>
+
+ <!-- Axes -->
+  <param name="axis_linear1" value="0" type="int"/>
+  <param name="axis_linear2" value="1" type="int"/>
+  <param name="axis_linear3" value="4" type="int"/>
+  <param name="axis_angular1" value="2" type="int"/>
+  <param name="axis_angular2" value="3" type="int"/>
+  <param name="axis_angular3" value="5" type="int"/>
+  <!--param name="scale_linear" value="2" type="double"/-->
+  <!--param name="scale_angular" value="2" type="double"/-->
+
+  <!-- teleop node-->
+  <node pkg="learning_joy" type="moveo_teleop_joy" name="teleop"/>
+</launch>
